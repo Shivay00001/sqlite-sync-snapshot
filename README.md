@@ -212,6 +212,7 @@ pytest tests/test_tamper_detection.py -v
 ### Determinism
 
 All hashing is deterministic:
+
 - Canonical JSON encoding with sorted keys
 - No timestamps in object identity
 - Same input always produces same hash
@@ -219,6 +220,7 @@ All hashing is deterministic:
 ### Safety
 
 Multiple layers of safety:
+
 - Hash verification on every read
 - Atomic writes with temp files
 - GC mark-and-sweep with safety checks
@@ -245,10 +247,12 @@ Multiple layers of safety:
 Main interface for all operations.
 
 **Initialization:**
+
 - `__init__(store_path)`: Create engine
 - `initialize()`: Initialize storage structure
 
 **Object Storage:**
+
 - `put_blob(data, metadata)`: Store blob
 - `put_bundle(bundle_data, metadata)`: Store bundle
 - `put_snapshot(bundles, parent, metadata)`: Create snapshot
@@ -260,27 +264,32 @@ Main interface for all operations.
 - `has_object(hash)`: Check existence
 
 **Named References:**
+
 - `create_snapshot_ref(name, hash)`: Create reference
 - `get_snapshot_ref(name)`: Get reference
 - `delete_snapshot_ref(name)`: Delete reference
 - `list_snapshot_refs()`: List all references
 
 **Integrity:**
+
 - `verify_object(hash)`: Verify single object
 - `verify_snapshot(hash)`: Verify snapshot recursively
 - `detect_tampering()`: Scan for tampering
 - `detect_missing_objects()`: Find broken references
 
 **Garbage Collection:**
+
 - `garbage_collect(dry_run)`: Run GC
 - `verify_gc_safety()`: Check GC safety
 
 **Integration:**
+
 - `import_sync_bundles(bundles, parent, name, metadata)`: Import from sqlite-sync-core
 - `extend_snapshot(parent, bundles, name, metadata)`: Extend snapshot
 - `export_snapshot_bundles(hash)`: Export to sqlite-sync-core
 
 **Statistics:**
+
 - `get_statistics()`: Get store stats
 - `list_all_objects()`: List all hashes
 
@@ -331,7 +340,7 @@ This is infrastructure-grade code. Contributions must:
 
 ## License
 
-[License information here]
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
 
 ## See Also
 
